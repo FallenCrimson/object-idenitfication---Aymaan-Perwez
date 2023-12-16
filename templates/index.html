@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identification Program</title>
+    <style>
+        h1 {
+            color: blue; /* Set the color of the identification program to blue */
+        }
+        .author {
+            font-size: smaller;
+            color: gray; /* Set the color of the author text to gray */
+        }
+        .welcome-text {
+            color: darkred; /* Set the color of the welcome text to dark red */
+        }
+        #identificationForm button {
+            background-color: lightgreen; /* Set the background color of the button to light green */
+        }
+    </style>
+</head>
+<body>
+
+<h1>IDENTIFICATION PROGRAM</h1>
+<p class="author" style="font-size: smaller;">By Aymaan Perwez</p>
+
+<p style="margin-top: 2em;" class="welcome-text">Welcome to the Identification Program! Here lie three options. Select the option you wish.</p>
+
+<form id="identificationForm">
+    <label for="userChoice">Choose an Option:</label>
+    <select id="userChoice" name="userChoice">
+        <option value="1">Object Identification</option>
+        <option value="2">Color Identification</option>
+        <option value="3">Length Measurement</option>
+        <option value="0">Exit</option>
+    </select>
+    <br>
+    <button type="button" onclick="runProgram()">Run Program</button>
+</form>
+
+<div id="result"></div>
+
+<script async>
+    function runProgram() {
+        const userChoice = document.getElementById('userChoice').value;
+
+        fetch('/run_program', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_choice: userChoice }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('result').innerText = data.result;
+            if (data.result.includes('Ask user to run again.')) {
+                // If you want to automatically run again, uncomment the line below
+                // runProgram();
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+</body>
+</html>

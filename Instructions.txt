@@ -1,0 +1,5 @@
+The file name - "Mainscript" -- is the main code to run
+The file name - "amo" -- is for object identifying(subscript - 1)
+the file name - "second" -- is for colour analysis
+the file nme - "regards" --  is for size measurement
+The file name - "other" -- is an alternative for the code if you wish to run it in windows gui without the help of the flask api
