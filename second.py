@@ -43,7 +43,7 @@ def get_color_name(R, G, B):
             cname = df.loc[i, 'color_name']
 
     return cname
-
+       
 #The Following function to get x, y coordinates of mouse, When the User double clicks On that Part Of The Image
 def draw_function(event, x, y, flags, params):
     if event == cv2.EVENT_LBUTTONDBLCLK:
@@ -54,7 +54,7 @@ def draw_function(event, x, y, flags, params):
         b, g, r = img[y, x]
         b = int(b)
         g = int(g)
-        r = int(r)
+        r = int(r)he
 
 # Creating A Window
 cv2.namedWindow('image')
